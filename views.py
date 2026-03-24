@@ -22,27 +22,21 @@ def submit(request, course_id):
                 if choice_id:
                     choice = Choice.objects.get(id=choice_id)
 
-                    Submission.objects.create(
-                        question=question,
-                        selected_choice=choice
-                    )
+                    Submission.objects.create(question=question, selected_choice=choice)
 
                     if choice.is_correct:
                         score += 1
 
-        request.session['score'] = score
-        request.session['total'] = total
+        request.session["score"] = score
+        request.session["total"] = total
 
-        return redirect('show_exam_result')
+        return redirect("show_exam_result")
 
-    return redirect('course_detail', course_id=course.id)
+    return redirect("course_detail", course_id=course.id)
 
 
 def show_exam_result(request):
-    score = request.session.get('score', 0)
-    total = request.session.get('total', 0)
+    score = request.session.get("score", 0)
+    total = request.session.get("total", 0)
 
-    return render(request, "result.html", {
-        "score": score,
-        "total": total
-    })
+    return render(request, "result.html", {"score": score, "total": total})

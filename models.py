@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Course(models.Model):
     title = models.CharField(max_length=200)
 
@@ -17,7 +18,9 @@ class Lesson(models.Model):
 
 
 class Question(models.Model):
-    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name="questions")
+    lesson = models.ForeignKey(
+        Lesson, on_delete=models.CASCADE, related_name="questions"
+    )
     text = models.TextField()
 
     def __str__(self):
@@ -25,7 +28,9 @@ class Question(models.Model):
 
 
 class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="choices")
+    question = models.ForeignKey(
+        Question, on_delete=models.CASCADE, related_name="choices"
+    )
     text = models.CharField(max_length=200)
     is_correct = models.BooleanField(default=False)
 
