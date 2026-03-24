@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ course.title }}</h1>
+
+<form method="post" action="{% url 'submit' course.id %}">
+    {% csrf_token %}
+
+    {% for lesson in course.lessons.all %}
+        <h3 class="mt-4">{{ lesson.title }}</h3>
+        <p>{{ lesson.content }}</p>
+
+        {% for question in lesson.questions.all %}
+            <div class="card p-3 mb-3">
+                <p><strong>{{ question.text }}</strong></p>
+
+                {% for choice in question.choices.all %}
+                    <div>
+                        <input type="radio" name="question_{{ question.id }}" value="{{ choice.id }}" id="choice_{{ choice.id }}">
+                        <label for="choice_{{ choice.id }}">{{ choice.text }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">Submit Exam</button>
+</form>
+
+{% endblock %}
