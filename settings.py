@@ -6,5 +6,5 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'courses',  # 👈 ADD YOUR APP HERE (IMPORTANT)
+    'course_app',  # 👈 ADD YOUR APP HERE (IMPORTANT)
 ]
