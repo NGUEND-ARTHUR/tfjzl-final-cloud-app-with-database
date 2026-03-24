@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+</head>
+<body class="container mt-5">
+
+<h1>Exam Result</h1>
+
+<h2>Your Score: {{ score }} / {{ total }}</h2>
+
+{% if score == total %}
+    <h3>🎉 Congratulations!</h3>
+{% elif score >= total|divisibleby:2 %}
+    <h3>👍 Good job!</h3>
+{% else %}
+    <h3>📚 Keep practicing!</h3>
+{% endif %}
+
+<a href="/">Back Home</a>
+
+</body>
+</html>
