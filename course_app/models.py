@@ -39,6 +39,9 @@ class Choice(models.Model):
 
 
 class Submission(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    selected_choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    score = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.course.title} - {self.score}"
