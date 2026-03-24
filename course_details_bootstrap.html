@@ -6,6 +6,9 @@
 </head>
 <body class="container mt-4">
 
+<!-- 🔙 Navigation -->
+<a href="{% url 'course_list' %}" class="btn btn-secondary mb-3">⬅ Back to Courses</a>
+
 <h1>{{ course.title }}</h1>
 
 <form method="post" action="{% url 'submit' course.id %}">
